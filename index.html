@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list app</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+	 integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-page">
+    <div class="bg-danger first-page">
+        <div class="text-left text-light p-4 header">
+            <h3>Todo App</h3>
+        </div>
+    <div class="container cont">
+     <div class="front-page">
+            <img class="rounded frontimg positon-absolute" width="300px" src="./images/front.jpg" alt="">
+            <div class="front-text p-2 text-light text-left">
+                <h3>Productive Todo List</h3>
+            </div>
+            <div  class=" p-3">
+                <p class="text">Start your task for today</p>
+            </div>
+
+            <div class="goto-task">
+                <button class="btn goto-btn">></button>
+                <input id="input-name" type="text" placeholder="Enter your name">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="second-page">
+    <div class=" container-fluid bg-light">
+        <div class="container ">
+        <div class="text-left text-light p-4 header">
+            <nav class=" nav-bar position-absolute">
+                <!-- hamburger to open the nav  -->
+                <input id="toggler" type="checkbox">
+                <label for="toggler" class="toggle1"></label>
+                <label for="toggler" class="toggle2"></label>
+                <label for="toggler" class="toggle3"></label>
+               
+                <ul class="nav-list">
+                    <li class="pt-4 pr-2" ><h4><span class="time"></span> <span class="name">jahs</span></h4></li>
+                    <lin onclick="gotoFrontPage()" id="logout">Logout</lin>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-3">
+            <div class=" greeting">
+                <h5>What's up, <span class="name">Jahs</span>!</h5>
+            </div>
+            
+        </div>
+        <div class="grid category p-3">
+            <p>Categories</p>
+        <div class="row ">
+            <div class="col bg-primary text-light p-2 col-sm-4">
+                <h6><span class="todo-index">45</span> Task <br> Todo List</h6>
+            </div>
+            <div class="col p-2 col-sm-6">
+                <h6><span class="completed-index">45</span> Completed<br> Todo Task</h6>
+            </div>
+        </div>
+    </div>
+    <div class="p-2">
+        <p class="date">December 1, 2020</p>
+    </div>
+
+    <div class=" todo-div">
+        
+        <div class="no-task text-center">
+            <h4 class="mt">Enter a new task</h4>
+        </div>
+        
+    </div>
+    
+        </div>
+        
+    </div>
+   
+    </div>
+     <div class="show-todo-btn bg-primary">
+        <i class="fas fa-plus"></i>
+    </div>
+    <div class="container">
+        <div class="third-page ">
+        <div class="container display-fixed  input-field">
+            <button class="btn close-btn positon-absolute btn-primary">
+                <span>&times;</span>
+            </button>
+            <div class="todo-input">
+                <div class="des">
+                    <h5 class="text-center">Make your task simple and precise</h5>
+                </div>
+                <input class="todoInput" type="text" placeholder="Enter new task ">
+                <div class="error">
+                    
+                </div>
+            <div onclick="addTodo()" class="add-todo">
+                <button class="btn btn-primary">New task <i class="fas fa-chevron-up "></i></button>
+            </div>
+           </div>
+           </div>
+          </div>
+         </div>
+         </div>
+    <script src="./index.js"></script>
+</body>
+</html>
