@@ -176,6 +176,9 @@ nav input:checked ~ label {
 nav input{
     display: none;
 }
+#logout{
+    cursor: pointer;
+}
 .category .col {
     box-shadow: 0px 0px 1px black;
     margin: 5px 5px 20px 5px;
@@ -288,4 +291,25 @@ nav input{
 .des {
     margin-top: 40px;
     color: teal;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 50%;
+    border : 1px solid #fff;
+    animation:scale 1s linear forwards;
+}
+
+@keyframes scale{
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
 }

@@ -87,22 +87,22 @@ function addTodo(){
     else{
         errorDiv.style.display ="block"
     }
-    updateTodoIndex()
 }
 
 todoContainer.addEventListener("click", (e)=>{
+
     item = e.target.parentElement;
     if(e.target.classList.contains("fa-trash")){
         item.remove();
-        updateTodoIndex()
     }
     if(e.target.checked == true){
         item.classList.add("completedTask");
         updateTodoIndex()
     }
     else{
-        item.classList.remove("completedTask")
+        item.classList.remove("completedTask");
         updateTodoIndex()
+    
     }
 
 
@@ -129,12 +129,13 @@ gotoTaskBtn.addEventListener("click", ()=>{
             name.style.color ="#686973"
         })
         myDate()
-        changeTime()
+        Time()
          
     };
     
 })
 
+//get date
 function myDate(){
     let Month = ["January", "february", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
@@ -152,6 +153,7 @@ function myDate(){
                 }
 }
 
+//show thirdview
 showAddTodoInputBtn.addEventListener("click", ()=>{
     secondView.style.transform = "translatex(-100%)"
     document.querySelector(".show-todo-btn").style.position ="fixed"
@@ -160,6 +162,7 @@ showAddTodoInputBtn.addEventListener("click", ()=>{
 
 })
 
+
 closeBtn.addEventListener("click", ()=>{
     secondView.style.transform="translatex(0%)"
     document.querySelector(".show-todo-btn").style.display ="flex"
@@ -167,7 +170,8 @@ closeBtn.addEventListener("click", ()=>{
 
 } )
 
-function changeTime(){
+//show time
+function Time(){
 let  dt = new Date();
  let hours = dt.getHours()
  if(hours < 12){
@@ -185,3 +189,30 @@ let  dt = new Date();
 }
 updateTodoIndex()
 
+window.addEventListener("touchstart", Touch);
+window.addEventListener("touchmove", Touch);
+window.addEventListener("mousedown", Touch);
+window.addEventListener("mousemove", Touch);
+window.addEventListener("mouseup",Touch)
+window.addEventListener("mouseover",Touch)
+
+window.onerror = function(){
+    return true;
+}
+
+function Touch(e){
+    let x = e.changedTouches[0].clientX;
+    let y = e.changedTouches[0].clientY;
+
+    let circle = document.createElement("p");
+    document.setAttribute("class", "circle");
+    circle.style.border ="8px solid #007bff"
+
+    circle.style.top = y + "px";
+    circle.style.left = x + "px";
+    document.body.appendChild(circle)
+
+    setTimeout(()=>{
+        circle.remove()
+    }, 1000)
+}
