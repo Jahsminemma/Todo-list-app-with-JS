@@ -117,8 +117,29 @@
             let id = 0;
             let completed = "checked"
             let uncomplete = "unchecked";
+            completedClass = "completed"
             let todoList;
-        
+            
+
+
+             // get item from local storage
+             todoList = JSON.parse(localStorage.getItem("todos"));
+             if(todoList !== null && todoList.length > 0){
+                 id = todoList.length
+                 updateUI(todoList);
+                
+             } else{
+                 id = 0;
+                 todoList = [];
+             }
+              function updateUI(LIST){
+                  LIST.forEach(todo=>{
+                   addElement(todo.name, todo.id, todo.check, todo.trash)
+                   todos = LIST
+                   
+                  })
+                  updateTodoIndex()
+              }
             // **** update the todo index and remove no task text ****//
 
            function updateTodoIndex(){
@@ -146,20 +167,22 @@
 
                 if(trash){return};
                 CHECK = check ? completed : uncomplete
-
+                CLASS = check ? completedClass : ""
                 let todoItems = document.createElement("div")
-                todoItems.setAttribute("class", "todo-items")
+                todoItems.setAttribute("class", "todo-items");
+                
 
                const input = document.createElement("input");
                 input.setAttribute("type", "checkbox")
                 input.setAttribute(CHECK, true);
                 input.setAttribute("id", id)
                 input.setAttribute("role", "completed")
+                input.setAttribute("class", CLASS)
                 todoItems.appendChild(input);
 
                 todoItems.innerHTML += `<small>${todo}</small><i id="${id}" role= "remove" class="fa fa-trash"></i>`
 
-                todoContainer.prepend(todoItems);
+                todoContainer.append(todoItems);
             };
             
             
@@ -179,7 +202,7 @@
                 if(todo){
                     addElement(todo,id, false, false);
 
-                    todos.unshift({
+                    todos.push({
                         name : todo,
                         id: id,
                         check : false,
@@ -200,9 +223,9 @@
 
             function completeTodo(element){
                 element.setAttribute(completed, true);
-                element.classList.toggle("completed")
+                element.setAttribute("class", completedClass)
                 todos[element.id].check = todos[element.id].check ? false : true;
-                
+               
             }
 
             function removeTodo(element){
@@ -219,12 +242,15 @@
                 
                 if(itemRole == "completed"){
                     completeTodo(element);
+                    updateTodoIndex()
                 }
                 if(itemRole == "remove"){
                     removeTodo(element)
+                    updateTodoIndex()
+                    
                 }
                 localStorage.setItem("todos", JSON.stringify(todos))
                 updateTodoIndex()
             })
-        
+            
             
