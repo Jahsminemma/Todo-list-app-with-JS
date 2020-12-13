@@ -223,7 +223,7 @@
 
             function completeTodo(element){
                 element.setAttribute(completed, true);
-                element.setAttribute("class", completedClass)
+                element.classList( completedClass)
                 todos[element.id].check = todos[element.id].check ? false : true;
                
             }
